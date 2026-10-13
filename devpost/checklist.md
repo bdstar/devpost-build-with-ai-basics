@@ -39,7 +39,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Enter the Aquarium Park URL and check that verified facts carry source links and look visibly different from AI assumptions. Edit a field, confirm, then try `not-a-url` and an unreachable site to see the error and manual form.
   Commit: `Add website-grounded business profile with provenance`
 
-- [ ] **4. Generate round one and an evidence-driven round two, with comparison**
+- [x] **4. Generate round one and an evidence-driven round two, with comparison**
   Becomes usable: From the confirmed profile, the app generates about 6 round-one ideas (Text, Image, Video/Reel) grouped by platform, goal and format, which can be selected. Generate Round Two then produces ideas that each show "Why this was suggested", their influencing knowledge record(s), post IDs and a Simulated Insight label (or "not knowledge-driven"). A comparison panel diffs format, goal, platform and CTA between the rounds, with the disclaimer.
   Why now: This completes the kernel, so the full "oh, that's cool" beat is demoable before any approval plumbing.
   PRD ref: `prd.md > Step 2 — Round-One Content Ideas`, `prd.md > Step 5 — Knowledge Feedback and Round Two`
