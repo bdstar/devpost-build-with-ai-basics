@@ -29,7 +29,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Open Performance & Insights and check that small groups say Insufficient Evidence while larger ones show n and CV. Generate knowledge, open a record in the Knowledge Base, and check that its supporting post IDs match the posts in the table.
   Commit: `Add evidence-graded performance analysis and knowledge records`
 
-- [ ] **3. Build and confirm the business profile from the website**
+- [x] **3. Build and confirm the business profile from the website**
   Becomes usable: Business Profile takes a URL, reads aquariumpark.com.bd, and shows verified facts (name, attractions, email, social links, each with source URL and time) beside fixture-labelled AI assumptions. Everything is editable, Confirm locks it in, and an unreachable or invalid URL falls back to manual entry.
   Why now: Round two needs a confirmed profile as its other input, and this is the one live external dependency on the demo path, so we test it early.
   PRD ref: `prd.md > Step 1 — Business Profile`
@@ -91,7 +91,8 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — after slice 2 (evidence ladder and knowledge records visible), when feedback can still reshape round two
+- [x] Early usable behavior explored — after slice 2 (evidence ladder and knowledge records visible), when feedback can still reshape round two
+  Feedback: login failed after `.env` credentials changed post-seeding (fixed by re-running `AdminSeeder`; README will document it); asked why Business Profile and Content Workflow were locked (not built yet, by plan). No change requested to the evidence analysis; learner asked to continue.
 - [ ] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
@@ -114,4 +115,5 @@ Activity mode:
 
 - Slice 3: the private-host guard now also applies to every redirect hop (redirects followed manually, max 3), as the learner requested at plan approval. `spec.md > WebsiteReader` updated to match.
 - Slice 1: Composer 2.2.25 created the Laravel 12 project without `self-update`; the missing `zip` extension was loaded per command (`php -d extension=zip composer.phar …`) instead of editing `php.ini`. Port 8000 is used by another local process on this machine, so local checks use `php artisan serve --port=8010`. The dataset CSV stays untracked until it matches the JSON, and the dataset README's date range ("through 2026-10-29") needs the learner's correction before shipping.
+- Slice 3: the real run against aquariumpark.com.bd (9 pages, 0 skipped) showed that video links (`youtube.com/watch`) were being taken as social profiles and that list items found on subpages had only the homepage as their source. Fixed: post/video links are excluded, and every list item stores its own source page. The automated end-to-end run through the logged-in app was blocked by auto-review (it would read the admin password), so the in-app real run is part of the learner's next hands-on check.
 
