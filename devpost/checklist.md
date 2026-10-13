@@ -49,7 +49,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Generate round one and select two ideas. Then generate round two and read one "Why this was suggested". Does it name a knowledge record and post IDs that match the Knowledge Base? Does the comparison panel tell the story clearly?
   Commit: `Add round-one ideas and knowledge-driven round two with comparison`
 
-- [ ] **5. Generate content and run it through approval**
+- [x] **5. Generate content and run it through approval**
   Becomes usable: Selected ideas become content items. Image ideas get a caption, hashtags, CTA, alt text and a labelled fixture image; video ideas get a production brief (script, shot list, on-screen text, duration) marked "Video Not Generated — Planning Preview Only". Items move Draft → Pending Approval → Approved, with Request Changes (feedback required), Reject (reason required) and Reopen, and each item shows its status history.
   Why now: Turns ideas into reviewable content and adds the human-approval safety the PRD requires. It builds on the selected ideas from slice 4.
   PRD ref: `prd.md > Step 3 — Generate, Review and Approve`
@@ -116,4 +116,5 @@ Activity mode:
 - Slice 3: the private-host guard now also applies to every redirect hop (redirects followed manually, max 3), as the learner requested at plan approval. `spec.md > WebsiteReader` updated to match.
 - Slice 1: Composer 2.2.25 created the Laravel 12 project without `self-update`; the missing `zip` extension was loaded per command (`php -d extension=zip composer.phar …`) instead of editing `php.ini`. Port 8000 is used by another local process on this machine, so local checks use `php artisan serve --port=8010`. The dataset CSV stays untracked until it matches the JSON, and the dataset README's date range ("through 2026-10-29") needs the learner's correction before shipping.
 - Slice 3: the real run against aquariumpark.com.bd (9 pages, 0 skipped) showed that video links (`youtube.com/watch`) were being taken as social profiles and that list items found on subpages had only the homepage as their source. Fixed: post/video links are excluded, and every list item stores its own source page. The automated end-to-end run through the logged-in app was blocked by auto-review (it would read the admin password), so the in-app real run is part of the learner's next hands-on check.
+- Slice 5: regenerating round two deletes its ideas, which would also delete content made from them. Round two now refuses to regenerate once any of its ideas has content (a guard on existing behavior, not new scope).
 
