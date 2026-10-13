@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IdeasController;
 use App\Http\Controllers\KnowledgeController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/manual', [ProfileController::class, 'manual'])->name('profile.manual');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('/profile/confirm', [ProfileController::class, 'confirm'])->name('profile.confirm');
+
+    Route::get('/workflow', [IdeasController::class, 'index'])->name('workflow.index');
+    Route::post('/workflow/round-one', [IdeasController::class, 'generateRoundOne'])->name('workflow.round-one');
+    Route::post('/workflow/round-two', [IdeasController::class, 'generateRoundTwo'])->name('workflow.round-two');
+    Route::post('/workflow/rounds/{round}/selection', [IdeasController::class, 'select'])->name('workflow.select');
 
     Route::get('/performance', [PerformanceController::class, 'index'])->name('performance.index');
     Route::post('/performance/load', [PerformanceController::class, 'load'])->name('performance.load');

@@ -1,0 +1,85 @@
+{
+  "_note": "Demo fixture: pre-written round-one ideas for the Aquarium Park Dhaka demo. Round one uses only the confirmed profile (no performance knowledge).",
+  "ideas": [
+    {
+      "fixture_key": "r1-aquarium-spotlight",
+      "title": "Meet the aquarium zone",
+      "topic": "Aquarium zone spotlight",
+      "platform": "Facebook",
+      "format": "Image",
+      "campaign_goal": "Awareness",
+      "audience": "Families in Dhaka who have not visited yet",
+      "objective": "Introduce {business_name}'s aquarium zone to new families",
+      "cta": "Learn more",
+      "hook": "Colourful fish, right in the middle of Dhaka.",
+      "key_message": "{business_name} brings aquatic life close to the city for a family day out."
+    },
+    {
+      "fixture_key": "r1-species-carousel",
+      "title": "Five species you can meet",
+      "topic": "Species facts",
+      "platform": "Instagram",
+      "format": "Carousel",
+      "campaign_goal": "Education",
+      "audience": "Parents and teachers looking for learning outings",
+      "objective": "Share simple species facts that make a visit educational",
+      "cta": "Save for your visit",
+      "hook": "Can you name all five?",
+      "key_message": "Every zone at {business_name} is a chance to learn something new."
+    },
+    {
+      "fixture_key": "r1-zone-question",
+      "title": "Which zone would your kids visit first?",
+      "topic": "Audience question",
+      "platform": "Facebook",
+      "format": "Text",
+      "campaign_goal": "Engagement",
+      "audience": "Followers who already know the park",
+      "objective": "Start a conversation in the comments",
+      "cta": "Comment below",
+      "hook": "Aquarium, bird aviary or waterfall: which comes first?",
+      "key_message": "Tell us which zone your family is most excited about."
+    },
+    {
+      "fixture_key": "r1-weekend-plan",
+      "title": "Plan your weekend visit",
+      "topic": "Visit planning",
+      "platform": "Instagram",
+      "format": "Image",
+      "campaign_goal": "Visit intent",
+      "audience": "Families planning a weekend outing",
+      "objective": "Encourage weekend visit planning",
+      "cta": "Plan your visit",
+      "hook": "Your weekend plan, sorted.",
+      "key_message": "Tickets, timings and what to bring for a relaxed family visit."
+    },
+    {
+      "fixture_key": "r1-park-walkthrough",
+      "title": "A 60-second walk through the park",
+      "topic": "Park overview",
+      "platform": "Facebook",
+      "format": "Reel",
+      "campaign_goal": "Awareness",
+      "audience": "People who have never visited",
+      "objective": "Show the full park experience in one minute",
+      "cta": "Follow for more",
+      "hook": "From the entrance to the waterfall in 60 seconds.",
+      "key_message": "There is more to see at {business_name} than you might expect.",
+      "duration_s": 60,
+      "aspect_ratio": "9:16"
+    },
+    {
+      "fixture_key": "r1-ticket-types",
+      "title": "Ticket types explained",
+      "topic": "Tickets",
+      "platform": "Facebook",
+      "format": "Carousel",
+      "campaign_goal": "Visit intent",
+      "audience": "Families, students and military visitors comparing ticket options",
+      "objective": "Make ticket choices clear before visiting",
+      "cta": "Buy tickets",
+      "hook": "Regular, student or military: which ticket is yours?",
+      "key_message": "Choose the right entry ticket in a few seconds."
+    }
+  ]
+}
