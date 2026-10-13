@@ -19,7 +19,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Run `php artisan serve`, log in with the demo admin from `.env`, open Performance & Insights, click Load, and check that 30 posts appear under the synthetic banner and the look matches what you pictured.
   Commit: `Scaffold app with login and synthetic dataset loading`
 
-- [ ] **2. See evidence-graded insights and knowledge records**
+- [x] **2. See evidence-graded insights and knowledge records**
   Becomes usable: Performance & Insights shows comparisons by format, campaign goal and platform+format with n, excluded count, mean ER, CV, CTR, formulas and confidence chips (e.g., `Low Confidence · n=7 · CV=0.61`). Groups under 5 posts show Insufficient Evidence. Saving creates knowledge records, browsable in the Knowledge Base with their supporting post IDs.
   Why now: This is the kernel's evidence half; everything in round two depends on it. It's pure arithmetic, so it can be proven with unit tests before any AI exists.
   PRD ref: `prd.md > Step 4 — Load and Analyse Performance`, `prd.md > Step 5 — Knowledge Feedback and Round Two`
