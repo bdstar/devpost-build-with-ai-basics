@@ -77,6 +77,7 @@ No other Composer packages, no Node, no queues.
 - **Mode:** `AI_MODE=fixtures` (default) or `AI_MODE=live` with `GEMINI_API_KEY`. The active mode shows as a badge in the top bar.
 - **Demo recording:** run through Steps 1–5 in fixtures mode, which is fully deterministic. Optionally show one live generation.
 - **Deployment:** none planned. The submission is the public repo plus a demo video under 3 minutes.
+- **Shared:** public repository https://github.com/bdstar/devpost-build-with-ai-basics; demo video https://youtu.be/z3JYErvpH_4 (both checked as reachable without signing in on 2026-10-13).
 
 ## Look and Feel
 Implements `prd.md > Look and Feel`.
