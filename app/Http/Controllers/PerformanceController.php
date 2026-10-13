@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KnowledgeRecord;
 use App\Models\PerformanceDataset;
 use App\Services\DatasetException;
+use App\Services\PerformanceAnalyzer;
 use App\Services\SyntheticDatasetLoader;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class PerformanceController extends Controller
 {
-    public function index(): View
+    public function index(PerformanceAnalyzer $analyzer): View
     {
         $dataset = PerformanceDataset::currentSynthetic();
+        $records = $dataset?->records()->orderBy('published_date')->orderBy('post_id')->get() ?? collect();
 
         return view('performance.index', [
             'dataset' => $dataset,
-            'records' => $dataset?->records()->orderBy('published_date')->orderBy('post_id')->get() ?? collect(),
+            'records' => $records,
+            'analysis' => $records->isNotEmpty() ? $analyzer->analyze($records) : [],
+            'knowledgeCount' => $dataset
+                ? KnowledgeRecord::where('source_dataset', $dataset->key)->where('dataset_version', $dataset->version)->count()
+                : 0,
         ]);
     }
 

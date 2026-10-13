@@ -12,6 +12,11 @@
                 @endif
                 <a href="{{ route('performance.index') }}">Open Performance &amp; Insights</a>
             </li>
+            <li>
+                <strong>Knowledge Base:</strong>
+                {{ \App\Models\KnowledgeRecord::count() }} records.
+                <a href="{{ route('knowledge.index') }}">Open Knowledge Base</a>
+            </li>
         </ul>
     </section>
 </x-layouts::app>

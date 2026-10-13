@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KnowledgeController;
 use App\Http\Controllers\PerformanceController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/performance', [PerformanceController::class, 'index'])->name('performance.index');
     Route::post('/performance/load', [PerformanceController::class, 'load'])->name('performance.load');
+
+    Route::get('/knowledge', [KnowledgeController::class, 'index'])->name('knowledge.index');
+    Route::post('/knowledge/build', [KnowledgeController::class, 'build'])->name('knowledge.build');
+    Route::get('/knowledge/{record}', [KnowledgeController::class, 'show'])->name('knowledge.show');
 });
