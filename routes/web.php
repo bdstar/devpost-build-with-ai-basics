@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/content/{item}', [ContentItemController::class, 'update'])->name('content.update');
     Route::post('/content/{item}/regenerate', [ContentItemController::class, 'regenerate'])->name('content.regenerate');
     Route::post('/content/{item}/{action}', [ContentItemController::class, 'transition'])
-        ->whereIn('action', ['submit', 'approve', 'request-changes', 'reject', 'reopen'])
+        ->whereIn('action', ['submit', 'approve', 'request-changes', 'reject', 'reopen', 'schedule', 'unschedule', 'simulate-publish', 'mark-published'])
         ->name('content.transition');
 
     Route::get('/performance', [PerformanceController::class, 'index'])->name('performance.index');

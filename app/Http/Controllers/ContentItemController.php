@@ -99,6 +99,10 @@ class ContentItemController extends Controller
             'request-changes' => 'Changes requested; the item is back in Draft with your feedback.',
             'reject' => 'Rejected.',
             'reopen' => 'Reopened as a draft.',
+            'schedule' => 'Scheduled. Nothing will be posted automatically: publishing is disabled.',
+            'unschedule' => 'Unscheduled; back to Approved.',
+            'simulate-publish' => 'Simulated publishing recorded — nothing was sent to any platform.',
+            'mark-published' => 'Marked as manually published.',
         ];
         abort_unless(isset($messages[$action]), 404);
 
@@ -108,6 +112,10 @@ class ContentItemController extends Controller
             'request-changes' => $workflow->requestChanges($item, $request->input('feedback')),
             'reject' => $workflow->reject($item, $request->input('reason')),
             'reopen' => $workflow->reopen($item),
+            'schedule' => $workflow->schedule($item, $request->input('date'), $request->input('time')),
+            'unschedule' => $workflow->unschedule($item),
+            'simulate-publish' => $workflow->simulatePublish($item),
+            'mark-published' => $workflow->markManuallyPublished($item, $request->boolean('confirmed')),
         }, $messages[$action]);
     }
 

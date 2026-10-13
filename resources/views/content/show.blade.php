@@ -110,7 +110,68 @@
                     <button class="btn">Reopen as draft</button>
                 </form>
             @endif
+            @if (in_array($item->status, ['draft', 'pending_approval', 'rejected'], true))
+                <span class="muted small">Scheduling unlocks once this item is approved.</span>
+            @endif
         </div>
+
+        @if ($workflow->can($item, 'schedule'))
+            @php $localNow = now()->setTimezone(config('app.display_timezone')); @endphp
+            <div class="publish-panel {{ $item->isReadyToPublish() ? 'is-ready' : '' }}">
+                @if ($item->status === 'scheduled')
+                    <p><strong>Scheduled for {{ $item->scheduled_at->toDisplay() }}</strong> on {{ $item->idea->platform }}.</p>
+                    @if ($item->isReadyToPublish())
+                        <p><strong>Ready to Publish — Manual Action Required.</strong>
+                            Automatic publishing is disabled: no verified account connection. Post it yourself on {{ $item->idea->platform }}, then mark it as published, or record a labelled simulation for the demo.</p>
+                    @else
+                        <p class="muted small">Nothing will be posted automatically. When this time passes, the item will show "Ready to Publish — Manual Action Required".</p>
+                    @endif
+                @endif
+
+                <form method="POST" action="{{ route('content.transition', [$item, 'schedule']) }}" class="schedule-form">@csrf
+                    <label>Date (Asia/Dhaka)
+                        <input type="date" name="date" required min="{{ $localNow->format('Y-m-d') }}"
+                               value="{{ $item->scheduled_at?->copy()->setTimezone(config('app.display_timezone'))->format('Y-m-d') }}">
+                    </label>
+                    <label>Time (Asia/Dhaka)
+                        <input type="time" name="time" required
+                               value="{{ $item->scheduled_at?->copy()->setTimezone(config('app.display_timezone'))->format('H:i') }}">
+                    </label>
+                    <button class="btn btn-primary">{{ $item->status === 'scheduled' ? 'Reschedule' : 'Schedule' }}</button>
+                </form>
+
+                @if ($item->status === 'scheduled')
+                    <div class="review-actions" style="margin-top: 12px">
+                        <form method="POST" action="{{ route('content.transition', [$item, 'unschedule']) }}">@csrf
+                            <button class="btn">Unschedule</button>
+                        </form>
+                        <form method="POST" action="{{ route('content.transition', [$item, 'simulate-publish']) }}"
+                              data-confirm="Record a simulated publication? Nothing is sent to any platform; it is labelled as simulated.">@csrf
+                            <button class="btn">Simulate Publishing (demo)</button>
+                        </form>
+                    </div>
+                    <form method="POST" action="{{ route('content.transition', [$item, 'mark-published']) }}">@csrf
+                        <label class="confirm-check">
+                            <input type="checkbox" name="confirmed" value="1" required>
+                            I confirm this post was actually published on {{ $item->idea->platform }}.
+                        </label>
+                        <button class="btn">Mark as Manually Published</button>
+                    </form>
+                @endif
+            </div>
+        @endif
+
+        @if ($item->status === 'published')
+            <div class="publish-panel">
+                <p><strong>Published {{ $item->published_at->toDisplay() }}</strong> —
+                    @if ($item->publish_method === 'simulated')
+                        Simulated — not sent to any platform.
+                    @else
+                        manually confirmed by the user (not verified by the platform).
+                    @endif
+                </p>
+            </div>
+        @endif
     </section>
 
     @if ($editable)
