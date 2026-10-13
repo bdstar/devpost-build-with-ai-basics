@@ -1,4 +1,5 @@
 <x-layouts::app title="Content Workflow">
+    <x-step-indicator :current="3" />
     <p><a href="{{ route('workflow.index') }}">← Ideas (Steps 2 and 5)</a></p>
 
     <section class="card">

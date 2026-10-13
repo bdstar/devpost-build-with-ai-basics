@@ -3,6 +3,7 @@
         $socialValues = old('social_urls', $profile->social_urls ?? []);
         $urlValue = old('website_url', $profile->website_url ?? 'https://aquariumpark.com.bd/');
     @endphp
+    <x-step-indicator :current="1" />
 
     @if ($showAnalyse)
         <section class="card">

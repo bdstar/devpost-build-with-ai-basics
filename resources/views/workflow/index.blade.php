@@ -1,4 +1,6 @@
 <x-layouts::app title="Content Workflow">
+    <x-step-indicator :current="$roundTwo ? 5 : 2" />
+
     {{-- Step 2 — Round-one ideas --}}
     <section class="card" id="round-1">
         <div class="card-head">

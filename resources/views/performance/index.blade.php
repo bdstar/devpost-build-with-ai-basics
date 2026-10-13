@@ -1,4 +1,5 @@
 <x-layouts::app title="Performance & Insights">
+    <x-step-indicator :current="4" />
     <div class="banner banner-synthetic" role="note">
         <strong>Synthetic Demo Data — Not Real Aquarium Park Analytics.</strong>
         Every record below is fictional, created for this proof of concept. No social account is connected.
@@ -30,7 +31,7 @@
                 <p class="muted small">Dataset warning: {{ $dataset->metadata['warning'] }}</p>
             @endif
         @else
-            <p class="empty">No performance data loaded yet. Load the synthetic dataset to see the 30 demo posts.</p>
+            <p class="empty">No performance data loaded yet. Loading reads the 30 synthetic demo posts from the file above (it is never modified), checks every record, and shows engagement comparisons by format, campaign goal and platform. The data is synthetic: it is not real Aquarium Park analytics.</p>
         @endif
     </section>
 

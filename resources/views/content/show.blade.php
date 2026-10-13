@@ -3,6 +3,7 @@
         $idea = $item->idea;
         $editable = in_array($item->status, ['draft', 'approved', 'scheduled'], true);
     @endphp
+    <x-step-indicator :current="3" />
     <p><a href="{{ route('content.index') }}">← All content</a></p>
 
     <section class="card">
