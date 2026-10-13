@@ -3,6 +3,7 @@
 namespace App\Services\Ai;
 
 use App\Models\BusinessProfile;
+use App\Models\ContentIdea;
 use App\Models\KnowledgeRecord;
 use Illuminate\Support\Collection;
 
@@ -43,6 +44,72 @@ class FixtureProvider implements AiProvider
         }
 
         return $this->roundTwo($this->fixture('ideas_round2.json'), $knowledge, $name);
+    }
+
+    public function content(ContentIdea $idea, BusinessProfile $profile): ContentDraft
+    {
+        $t = $this->fixture('content.json');
+        $haystack = strtolower($idea->topic.' '.$idea->title);
+        $matches = fn (array $words) => $words === [] || collect($words)->contains(fn ($w) => str_contains($haystack, $w));
+
+        $vars = [
+            '{hook}' => $idea->hook,
+            '{key_message}' => $idea->key_message,
+            '{cta}' => $idea->cta,
+            '{topic_lower}' => strtolower($idea->topic ?? 'park'),
+            '{business_name}' => $profile->value('business_name') ?: 'the business',
+            '{aspect_ratio}' => $idea->aspect_ratio ?? '9:16',
+            '{duration_s}' => (string) ($idea->duration_s ?? 30),
+        ];
+        $fill = fn (string $s) => strtr($s, $vars);
+
+        $tags = $t['base_hashtags'];
+        foreach ($t['topic_hashtags'] as $rule) {
+            if ($matches($rule['match'])) {
+                $tags = [...$tags, ...$rule['tags']];
+                break;
+            }
+        }
+
+        $caption = trim($idea->hook."\n\n".$idea->key_message."\n\n".$idea->cta.' →');
+
+        if ($idea->isVideo()) {
+            $brief = $t['video_brief'];
+
+            return new ContentDraft(
+                caption: $caption,
+                hashtags: implode(' ', array_unique($tags)),
+                cta: $idea->cta,
+                altText: null,
+                imagePath: null,
+                imageProvenance: null,
+                videoBrief: [
+                    'script' => array_map(fn ($s) => ['label' => $s['label'], 'direction' => $fill($s['direction'])], $brief['scenes']),
+                    'shot_list' => array_map($fill, $brief['shot_list']),
+                    'on_screen_text' => array_map($fill, $brief['on_screen_text']),
+                    'duration_s' => $idea->duration_s ?? 30,
+                    'aspect_ratio' => $idea->aspect_ratio ?? '9:16',
+                    'notes' => $fill($brief['notes']),
+                ],
+                provenance: self::PROVENANCE,
+            );
+        }
+
+        $image = null;
+        if ($idea->format !== 'Text') {
+            $image = collect($t['images'])->first(fn ($i) => $matches($i['match']));
+        }
+
+        return new ContentDraft(
+            caption: $caption,
+            hashtags: implode(' ', array_unique($tags)),
+            cta: $idea->cta,
+            altText: $image['alt'] ?? null,
+            imagePath: $image ? '/demo-fixtures/images/'.$image['file'] : null,
+            imageProvenance: $image ? self::PROVENANCE : null,
+            videoBrief: null,
+            provenance: self::PROVENANCE,
+        );
     }
 
     /**

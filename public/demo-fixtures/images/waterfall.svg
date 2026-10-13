@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Demo fixture image: an indoor waterfall">
+  <rect width="1080" height="1080" fill="#0B2540"/>
+  <rect x="80" y="160" width="920" height="640" rx="24" fill="#5B6B7A"/>
+  <rect x="420" y="160" width="240" height="560" fill="#D7F1F2"/>
+  <g stroke="#0E7C86" stroke-width="8" opacity="0.7">
+    <line x1="460" y1="200" x2="460" y2="700"/><line x1="520" y1="180" x2="520" y2="700"/>
+    <line x1="580" y1="210" x2="580" y2="700"/><line x1="630" y1="190" x2="630" y2="700"/>
+  </g>
+  <ellipse cx="540" cy="740" rx="380" ry="50" fill="#0E7C86"/>
+  <text x="540" y="900" font-family="Segoe UI, Arial, sans-serif" font-size="44" fill="#FFFFFF" text-anchor="middle" font-weight="600">Demo fixture image</text>
+  <text x="540" y="960" font-family="Segoe UI, Arial, sans-serif" font-size="32" fill="#D7F1F2" text-anchor="middle">Not generated in this session · Waterfall</text>
+</svg>

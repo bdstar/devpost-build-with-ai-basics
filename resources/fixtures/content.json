@@ -1,0 +1,36 @@
+{
+  "_note": "Demo fixture templates for post content. Filled deterministically from each idea's own fields. Images are bundled, labelled placeholders, not generated in this session.",
+  "base_hashtags": ["#AquariumParkDhaka", "#DhakaFamilyOuting"],
+  "topic_hashtags": [
+    {"match": ["fish feeding", "fish catching", "fish"], "tags": ["#FishFeeding", "#KidsActivities"]},
+    {"match": ["bird", "aviary"], "tags": ["#BirdAviary", "#BirdsOfDhaka"]},
+    {"match": ["waterfall"], "tags": ["#IndoorWaterfall", "#PhotoSpot"]},
+    {"match": ["terrarium"], "tags": ["#Terrarium", "#LearnWithUs"]},
+    {"match": ["species", "learn"], "tags": ["#LearnWithUs", "#SchoolTrip"]},
+    {"match": ["ticket", "visit", "plan"], "tags": ["#PlanYourVisit", "#WeekendInDhaka"]},
+    {"match": ["aquarium", "park"], "tags": ["#AquariumZone", "#MarineLife"]}
+  ],
+  "images": [
+    {"match": ["bird", "aviary"], "file": "aviary.svg", "alt": "Illustrated placeholder of a bird in the aviary (demo fixture image)"},
+    {"match": ["waterfall"], "file": "waterfall.svg", "alt": "Illustrated placeholder of an indoor waterfall (demo fixture image)"},
+    {"match": ["terrarium"], "file": "terrarium.svg", "alt": "Illustrated placeholder of a terrarium with plants (demo fixture image)"},
+    {"match": ["ticket", "visit", "plan"], "file": "visit.svg", "alt": "Illustrated placeholder of a visit planning checklist (demo fixture image)"},
+    {"match": [], "file": "aquarium.svg", "alt": "Illustrated placeholder of fish in an aquarium (demo fixture image)"}
+  ],
+  "video_brief": {
+    "scenes": [
+      {"label": "Hook (0–3s)", "direction": "Open on the strongest moment: {hook}"},
+      {"label": "Experience", "direction": "Show the {topic_lower} up close, filmed at visitor eye level with natural sound."},
+      {"label": "People", "direction": "Capture a real visitor reaction (with consent) that supports: {key_message}"},
+      {"label": "Close", "direction": "End card with {business_name} logo and the call to action: {cta}."}
+    ],
+    "shot_list": [
+      "Wide establishing shot of the {topic_lower}",
+      "Close-up detail shot (animals, water, textures)",
+      "Visitor reaction shot (consent required)",
+      "Logo end card with CTA"
+    ],
+    "on_screen_text": ["{hook}", "{key_message}", "{cta}"],
+    "notes": "Vertical {aspect_ratio}, about {duration_s} seconds. Use licensed music only. Avoid showing children's faces without guardian consent."
+  }
+}

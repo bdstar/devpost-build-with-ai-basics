@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContentItemController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeasController;
 use App\Http\Controllers\KnowledgeController;
@@ -28,6 +29,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/workflow/round-one', [IdeasController::class, 'generateRoundOne'])->name('workflow.round-one');
     Route::post('/workflow/round-two', [IdeasController::class, 'generateRoundTwo'])->name('workflow.round-two');
     Route::post('/workflow/rounds/{round}/selection', [IdeasController::class, 'select'])->name('workflow.select');
+
+    Route::get('/content', [ContentItemController::class, 'index'])->name('content.index');
+    Route::post('/content/generate', [ContentItemController::class, 'generate'])->name('content.generate');
+    Route::get('/content/{item}', [ContentItemController::class, 'show'])->name('content.show');
+    Route::put('/content/{item}', [ContentItemController::class, 'update'])->name('content.update');
+    Route::post('/content/{item}/regenerate', [ContentItemController::class, 'regenerate'])->name('content.regenerate');
+    Route::post('/content/{item}/{action}', [ContentItemController::class, 'transition'])
+        ->whereIn('action', ['submit', 'approve', 'request-changes', 'reject', 'reopen'])
+        ->name('content.transition');
 
     Route::get('/performance', [PerformanceController::class, 'index'])->name('performance.index');
     Route::post('/performance/load', [PerformanceController::class, 'load'])->name('performance.load');

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Demo fixture image: a visit planning checklist">
+  <rect width="1080" height="1080" fill="#0B2540"/>
+  <rect x="80" y="160" width="920" height="640" rx="24" fill="#D7F1F2"/>
+  <rect x="330" y="230" width="420" height="500" rx="20" fill="#FFFFFF" stroke="#0E7C86" stroke-width="8"/>
+  <g stroke="#0E7C86" stroke-width="10" fill="none" stroke-linecap="round">
+    <polyline points="380,330 405,355 445,310"/><polyline points="380,450 405,475 445,430"/><polyline points="380,570 405,595 445,550"/>
+  </g>
+  <g fill="#5B6B7A"><rect x="480" y="320" width="220" height="22" rx="11"/><rect x="480" y="440" width="200" height="22" rx="11"/><rect x="480" y="560" width="180" height="22" rx="11"/></g>
+  <text x="540" y="900" font-family="Segoe UI, Arial, sans-serif" font-size="44" fill="#FFFFFF" text-anchor="middle" font-weight="600">Demo fixture image</text>
+  <text x="540" y="960" font-family="Segoe UI, Arial, sans-serif" font-size="32" fill="#D7F1F2" text-anchor="middle">Not generated in this session · Visit planning</text>
+</svg>

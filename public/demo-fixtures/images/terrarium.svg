@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Demo fixture image: a terrarium with plants">
+  <rect width="1080" height="1080" fill="#0B2540"/>
+  <rect x="80" y="160" width="920" height="640" rx="24" fill="#F5F8FA"/>
+  <rect x="300" y="300" width="480" height="420" rx="30" fill="none" stroke="#0E7C86" stroke-width="14"/>
+  <rect x="314" y="620" width="452" height="86" fill="#B7791F" opacity="0.6"/>
+  <g fill="#1E8E5A">
+    <ellipse cx="420" cy="560" rx="30" ry="80"/><ellipse cx="540" cy="520" rx="34" ry="110"/><ellipse cx="660" cy="570" rx="28" ry="70"/>
+  </g>
+  <text x="540" y="900" font-family="Segoe UI, Arial, sans-serif" font-size="44" fill="#FFFFFF" text-anchor="middle" font-weight="600">Demo fixture image</text>
+  <text x="540" y="960" font-family="Segoe UI, Arial, sans-serif" font-size="32" fill="#D7F1F2" text-anchor="middle">Not generated in this session · Terrarium</text>
+</svg>

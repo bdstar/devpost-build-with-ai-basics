@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BusinessProfile;
+use App\Models\ContentItem;
 use App\Models\ContentRound;
 use App\Models\KnowledgeRecord;
 use App\Services\Ai\AiException;
@@ -63,6 +64,9 @@ class IdeasController extends Controller
         $knowledge = KnowledgeRecord::ordered()->get();
         if ($knowledge->isEmpty()) {
             return redirect()->route('workflow.index')->with('error', 'Round two needs knowledge records. Load the dataset and save insights in Performance & Insights first.');
+        }
+        if (ContentItem::whereHas('idea.round', fn ($q) => $q->where('number', 2))->exists()) {
+            return redirect()->route('workflow.index')->with('error', 'Round two already has generated content, so it cannot be replaced without losing that content.');
         }
 
         return $this->generate($profile, $knowledge, 2);

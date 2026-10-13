@@ -23,7 +23,7 @@
             $nav = [
                 ['route' => 'dashboard', 'label' => 'Dashboard', 'match' => 'dashboard'],
                 ['route' => 'profile.show', 'label' => 'Business Profile', 'match' => 'profile.*'],
-                ['route' => 'workflow.index', 'label' => 'Content Workflow', 'match' => 'workflow.*'],
+                ['route' => 'workflow.index', 'label' => 'Content Workflow', 'match' => ['workflow.*', 'content.*']],
                 ['route' => 'performance.index', 'label' => 'Performance & Insights', 'match' => 'performance.*'],
                 ['route' => 'knowledge.index', 'label' => 'Knowledge Base', 'match' => 'knowledge.*'],
             ];
@@ -31,7 +31,7 @@
         <nav>
             @foreach ($nav as $item)
                 @if (Route::has($item['route']))
-                    <a href="{{ route($item['route']) }}" @class(['nav-item', 'active' => request()->routeIs($item['match'])])>{{ $item['label'] }}</a>
+                    <a href="{{ route($item['route']) }}" @class(['nav-item', 'active' => request()->routeIs(...(array) $item['match'])])>{{ $item['label'] }}</a>
                 @else
                     <span class="nav-item disabled" title="Not built yet">{{ $item['label'] }}</span>
                 @endif

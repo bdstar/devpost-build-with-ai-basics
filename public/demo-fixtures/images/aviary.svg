@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Demo fixture image: a bird in the aviary">
+  <rect width="1080" height="1080" fill="#0B2540"/>
+  <rect x="80" y="160" width="920" height="640" rx="24" fill="#D7F1F2"/>
+  <line x1="200" y1="620" x2="880" y2="620" stroke="#0A5F67" stroke-width="18" stroke-linecap="round"/>
+  <ellipse cx="540" cy="520" rx="120" ry="90" fill="#0E7C86"/>
+  <circle cx="630" cy="430" r="55" fill="#0E7C86"/>
+  <polygon points="680,425 740,440 680,455" fill="#B7791F"/>
+  <circle cx="645" cy="420" r="9" fill="#0B2540"/>
+  <polygon points="420,520 330,590 450,570" fill="#0A5F67"/>
+  <text x="540" y="900" font-family="Segoe UI, Arial, sans-serif" font-size="44" fill="#FFFFFF" text-anchor="middle" font-weight="600">Demo fixture image</text>
+  <text x="540" y="960" font-family="Segoe UI, Arial, sans-serif" font-size="32" fill="#D7F1F2" text-anchor="middle">Not generated in this session · Bird aviary</text>
+</svg>

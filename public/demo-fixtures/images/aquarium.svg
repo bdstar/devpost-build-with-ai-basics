@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Demo fixture image: fish in an aquarium">
+  <rect width="1080" height="1080" fill="#0B2540"/>
+  <rect x="80" y="160" width="920" height="640" rx="24" fill="#0E7C86"/>
+  <g fill="#D7F1F2">
+    <ellipse cx="380" cy="420" rx="110" ry="60"/><polygon points="270,420 200,370 200,470"/>
+    <ellipse cx="700" cy="560" rx="80" ry="44"/><polygon points="620,560 570,525 570,595"/>
+    <circle cx="430" cy="405" r="10" fill="#0B2540"/><circle cx="740" cy="550" r="8" fill="#0B2540"/>
+  </g>
+  <g fill="none" stroke="#D7F1F2" stroke-width="6" opacity="0.6">
+    <circle cx="520" cy="300" r="14"/><circle cx="550" cy="250" r="9"/><circle cx="800" cy="420" r="12"/>
+  </g>
+  <text x="540" y="900" font-family="Segoe UI, Arial, sans-serif" font-size="44" fill="#FFFFFF" text-anchor="middle" font-weight="600">Demo fixture image</text>
+  <text x="540" y="960" font-family="Segoe UI, Arial, sans-serif" font-size="32" fill="#D7F1F2" text-anchor="middle">Not generated in this session · Aquarium</text>
+</svg>

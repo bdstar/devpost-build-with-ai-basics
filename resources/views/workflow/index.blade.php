@@ -50,7 +50,7 @@
                 @endforelse
                 <div class="actions">
                     <button type="submit" class="btn btn-primary">Save selection</button>
-                    <span class="muted small">Selected ideas move on to content generation (Step 3).</span>
+                    <a href="{{ route('content.index') }}" class="btn">Step 3 — Generate and review content →</a>
                 </div>
             </form>
         @endif

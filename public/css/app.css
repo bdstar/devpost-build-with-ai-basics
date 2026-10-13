@@ -291,6 +291,29 @@ details summary { cursor: pointer; margin: 6px 0; }
 .delta-up { color: var(--ok-text); font-weight: 600; }
 .delta-down { color: var(--bad); font-weight: 600; }
 
+/* Content items */
+.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+.pill-draft { border-color: var(--border); background: #EEF2F5; color: var(--text); }
+.pill-pending_approval { border-color: var(--warn); background: #FDF5E7; color: var(--warn-text); }
+.pill-approved { border-color: var(--ok); background: #EAF6F0; color: var(--ok-text); }
+.pill-rejected, .pill-publishing_failed { border-color: var(--bad); background: #FBECEA; color: var(--bad); }
+.pill-scheduled { border-color: var(--teal); background: var(--aqua); color: var(--teal-dark); }
+.pill-published { border-color: var(--navy); background: var(--navy); color: #FFFFFF; }
+.pill-ready { border-color: var(--warn); background: #FFFFFF; color: var(--warn-text); border-width: 2px; }
+.content-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.caption-text { padding: 12px; background: var(--bg); border-radius: 6px; }
+.post-image { margin: 0; }
+.post-image img { width: 100%; max-width: 420px; border-radius: var(--radius); border: 1px solid var(--border); display: block; }
+.post-image figcaption { font-size: 12px; font-weight: 600; color: var(--warn-text); margin-top: 6px; }
+.video-brief { border: 2px dashed var(--warn); border-radius: var(--radius); padding: 14px; background: #FFFDF8; }
+.video-brief h4 { margin: 10px 0 4px; font-size: 13px; color: var(--navy); }
+.video-brief ol, .video-brief ul { margin: 0; padding-left: 18px; }
+.video-label { font-weight: 700; color: var(--warn-text); }
+.review-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.review-actions form { margin: 0; }
+.inline-form { display: flex; gap: 6px; }
+.inline-form input { font: inherit; padding: 7px 10px; border: 1px solid var(--border); border-radius: 6px; min-width: 240px; }
+
 /* Login */
 .login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
 .login-card { width: 380px; }
