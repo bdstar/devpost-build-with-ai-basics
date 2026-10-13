@@ -9,7 +9,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
 
 ## Slices
 
-- [ ] **1. Log in and load the synthetic dataset**
+- [x] **1. Log in and load the synthetic dataset**
   Becomes usable: A running Laravel app with login, the navy sidebar layout and mode badge. Performance & Insights loads the 30 synthetic posts from the canonical JSON into SQLite and shows them in a table under a persistent "Synthetic Demo Data — Not Real Aquarium Park Analytics" banner.
   Why now: Bootstraps the whole stack (Composer on this machine, SQLite, auth, layout, CSS) on the data the kernel depends on. If the dataset doesn't fit the model, we find out first.
   PRD ref: `prd.md > Access`, `prd.md > Step 4 — Load and Analyse Performance`, `prd.md > Look and Feel`
@@ -113,4 +113,5 @@ Activity mode:
 ## Revisions
 
 - Slice 3: the private-host guard now also applies to every redirect hop (redirects followed manually, max 3), as the learner requested at plan approval. `spec.md > WebsiteReader` updated to match.
+- Slice 1: Composer 2.2.25 created the Laravel 12 project without `self-update`; the missing `zip` extension was loaded per command (`php -d extension=zip composer.phar …`) instead of editing `php.ini`. Port 8000 is used by another local process on this machine, so local checks use `php artisan serve --port=8010`. The dataset CSV stays untracked until it matches the JSON, and the dataset README's date range ("through 2026-10-29") needs the learner's correction before shipping.
 
