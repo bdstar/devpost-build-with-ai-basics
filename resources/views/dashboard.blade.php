@@ -3,6 +3,12 @@
         <h2>Workflow</h2>
         <p class="muted">The guided five-step dashboard is completed in a later build step. Available now:</p>
         <ul class="plain-list">
+            @php $profile = \App\Models\BusinessProfile::current(); @endphp
+            <li>
+                <strong>Step 1 — Business Profile:</strong>
+                {{ $profile ? ($profile->isConfirmed() ? 'confirmed.' : 'draft, not confirmed yet.') : 'not started.' }}
+                <a href="{{ route('profile.show') }}">Open Business Profile</a>
+            </li>
             <li>
                 <strong>Step 4 — Performance &amp; Insights:</strong>
                 @if ($dataset)

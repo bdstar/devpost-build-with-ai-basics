@@ -183,7 +183,7 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 13px; }
 .prov-verified { border-color: var(--teal); color: var(--teal-dark); }
 .prov-verified::before { content: "\1F517\FE0E  "; }
 .prov-assumption { border-style: dashed; border-color: var(--muted); color: var(--muted); }
-.prov-manual { border-color: var(--muted); color: var(--text); }
+.prov-manual, .prov-edited { border-color: var(--muted); color: var(--text); }
 .prov-synthetic { border-color: var(--warn); color: var(--warn-text); background: #FDF5E7; letter-spacing: 0.02em; }
 .prov-real { border-color: var(--ok); background: var(--ok); color: #FFFFFF; }
 .prov-insight, .prov-simulated { border-color: var(--teal); background: var(--aqua); color: var(--teal-dark); }
@@ -242,6 +242,25 @@ code { font-family: Consolas, "Courier New", monospace; font-size: 13px; }
 .kr-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
 .kr-head h2 { margin: 0; }
 .facts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); margin: 12px 0; }
+
+/* Business profile */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px 16px; margin-top: 8px; }
+.form-grid > div { display: flex; flex-direction: column; gap: 4px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.actions .btn { margin-top: 0; }
+.head-actions { display: flex; align-items: center; gap: 10px; }
+.head-actions form { margin: 0; }
+.badge-ok { border-color: var(--ok); color: var(--ok-text); background: #EAF6F0; }
+.badge-draft { border-color: var(--warn); color: var(--warn-text); background: #FDF5E7; }
+.profile-fields { margin: 0; }
+.profile-field { padding: 12px 0 12px 12px; border-bottom: 1px solid var(--border); border-left: 3px solid transparent; }
+.profile-field:last-child { border-bottom: none; }
+.profile-field dt { font-weight: 600; color: var(--navy); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }
+.profile-field dd { margin: 0; }
+.profile-field ul { margin: 0; padding-left: 18px; }
+.prov-row-verified { border-left-color: var(--teal); }
+.prov-row-assumption { border-left: 3px dashed var(--muted); background: #FAFBFC; }
+details summary { cursor: pointer; margin: 6px 0; }
 
 /* Login */
 .login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }

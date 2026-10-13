@@ -4,6 +4,7 @@
         'verified' => 'Verified public',
         'assumption' => 'AI assumption',
         'manual' => 'Manual entry',
+        'edited' => 'Edited manually',
         'synthetic' => 'SYNTHETIC',
         'real' => 'Real metric',
         'insight' => 'AI insight',
