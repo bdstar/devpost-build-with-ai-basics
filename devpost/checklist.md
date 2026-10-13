@@ -69,7 +69,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Approve an item, schedule it two minutes ahead, run `php artisan schedule:work`, and watch it become Ready to Publish without turning Published. Then Simulate Publishing and check that the label says it wasn't sent anywhere.
   Commit: `Add scheduling with manual and simulated publication`
 
-- [ ] **7. Dashboard and guided workflow progress**
+- [x] **7. Dashboard and guided workflow progress**
   Becomes usable: The Dashboard shows profile status, current step and progress, round-one and approval status, data source (synthetic), knowledge insights, round-two status and a prominent "Continue: [next step]". The Content Workflow shows a persistent five-step indicator; locked steps explain why, and completed steps can be revisited. Empty states are in place.
   Why now: It ties the finished steps into the guided journey the PRD describes, which needs every step to exist first.
   PRD ref: `prd.md > Screens and Layout`, `prd.md > States and Boundaries`, `prd.md > The Core Journey`
@@ -118,4 +118,5 @@ Activity mode:
 - Slice 3: the real run against aquariumpark.com.bd (9 pages, 0 skipped) showed that video links (`youtube.com/watch`) were being taken as social profiles and that list items found on subpages had only the homepage as their source. Fixed: post/video links are excluded, and every list item stores its own source page. The automated end-to-end run through the logged-in app was blocked by auto-review (it would read the admin password), so the in-app real run is part of the learner's next hands-on check.
 - Slice 5: regenerating round two deletes its ideas, which would also delete content made from them. Round two now refuses to regenerate once any of its ideas has content (a guard on existing behavior, not new scope).
 - Slice 6: a test exposed that a workflow action on an out-of-date copy of an item could skip a change (rescheduling didn't clear the due marker). Every transition now reloads the item inside its transaction before checking the rule. Simulate Publishing and Mark as Manually Published are offered only for Scheduled items, matching the PRD transition list.
+- Slice 7: a step shows as locked only when the app actually refuses its action. On first use Steps 2, 3 and 5 are locked with reasons; Step 4 (load synthetic data) has no prerequisite, so it shows as "To do" rather than locked (the PRD's first-use note expected Steps 2–5 all locked). Step 3 counts as complete once any item is Approved, Scheduled or Published.
 
