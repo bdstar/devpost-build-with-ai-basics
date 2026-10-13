@@ -59,7 +59,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Generate content for an image idea and a video idea. Submit one, request changes with feedback, and check the feedback shows on the Draft. Submit again and approve. Try rejecting without a reason, then open the history.
   Commit: `Add content generation and approval workflow`
 
-- [ ] **6. Schedule approved content without fake publishing**
+- [x] **6. Schedule approved content without fake publishing**
   Becomes usable: Approved items can be scheduled with date and time pickers (Asia/Dhaka, stored as UTC; past times rejected), rescheduled or unscheduled. Once the time passes, the item shows "Ready to Publish — Manual Action Required" with the explanation. Simulate Publishing records a result labelled "Simulated — not sent to any platform", and Mark as Manually Published requires confirmation. `php artisan schedule:work` records the due-time history note.
   Why now: It completes the approval-to-publication path, and depends on slice 5's states.
   PRD ref: `prd.md > Step 3 — Generate, Review and Approve` (scheduling with publishing disabled)
@@ -117,4 +117,5 @@ Activity mode:
 - Slice 1: Composer 2.2.25 created the Laravel 12 project without `self-update`; the missing `zip` extension was loaded per command (`php -d extension=zip composer.phar …`) instead of editing `php.ini`. Port 8000 is used by another local process on this machine, so local checks use `php artisan serve --port=8010`. The dataset CSV stays untracked until it matches the JSON, and the dataset README's date range ("through 2026-10-29") needs the learner's correction before shipping.
 - Slice 3: the real run against aquariumpark.com.bd (9 pages, 0 skipped) showed that video links (`youtube.com/watch`) were being taken as social profiles and that list items found on subpages had only the homepage as their source. Fixed: post/video links are excluded, and every list item stores its own source page. The automated end-to-end run through the logged-in app was blocked by auto-review (it would read the admin password), so the in-app real run is part of the learner's next hands-on check.
 - Slice 5: regenerating round two deletes its ideas, which would also delete content made from them. Round two now refuses to regenerate once any of its ideas has content (a guard on existing behavior, not new scope).
+- Slice 6: a test exposed that a workflow action on an out-of-date copy of an item could skip a change (rescheduling didn't clear the due marker). Every transition now reloads the item inside its transaction before checking the rule. Simulate Publishing and Mark as Manually Published are offered only for Scheduled items, matching the PRD transition list.
 
