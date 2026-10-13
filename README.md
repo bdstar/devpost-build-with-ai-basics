@@ -139,6 +139,7 @@ The **Dashboard** shows overall progress and one **Continue: [next step]** butto
 - Current step, "x of 5 steps complete" progress bar, and a prominent **Continue** button.
 - Cards for the business profile, round-one and approval status (counts per state, Ready-to-Publish count), performance data source, knowledge insights and round two.
 - Empty states explain what each step does before it has data.
+- **Reset all project data** (bottom of the Dashboard): deletes the Business Profile, all idea rounds, content items and their history, the loaded performance dataset, Knowledge Base records and AI-generated images, so the journey can start again from Step 1. You must type `RESET` and confirm. Your login and the synthetic dataset source files are kept.
 
 ### Provenance labels
 Every piece of information carries one of these labels: **Verified public**, **AI assumption**, **Manual entry**, **Edited manually**, **SYNTHETIC**, **AI insight / Simulated Insight**, **Demo fixture** and **Live AI · model name**.
@@ -338,7 +339,7 @@ GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
 php artisan test
 ```
 
-The suite (86 tests) covers authentication, dataset loading and validation, the evidence ladder and its boundaries, knowledge records, website reading (including private-address and redirect protection), round one and round two (including "removing a knowledge record changes round two"), the content workflow state machine, scheduling and time zones, the due-check command, dashboard progress, the Gemini provider with faked responses, and one end-to-end test of the whole journey from login to the round-two comparison.
+The suite (91 tests) covers authentication, dataset loading and validation, the evidence ladder and its boundaries, knowledge records, website reading (including private-address and redirect protection), round one and round two (including "removing a knowledge record changes round two"), the content workflow state machine, scheduling and time zones, the due-check command, dashboard progress, resetting all project data, the Gemini provider with faked responses, and one end-to-end test of the whole journey from login to the round-two comparison.
 
 Tests always run in Demo Fixtures mode (`phpunit.xml` sets `AI_MODE=fixtures`) and **block all real network requests**, so they never call Gemini or any website and never cost anything.
 
@@ -357,7 +358,8 @@ app/
 │   ├── ContentItemController.php             # Step 3 (generation, review, scheduling)
 │   ├── PerformanceController.php             # Step 4
 │   ├── KnowledgeController.php               # Knowledge Base
-│   └── AiModeController.php                  # Switch to Demo Fixtures / back to Live AI
+│   ├── AiModeController.php                  # Switch to Demo Fixtures / back to Live AI
+│   └── ResetController.php                   # Reset all project data (typed confirmation)
 ├── Models/                                   # User, BusinessProfile, ContentRound, ContentIdea,
 │                                             # ContentItem, StatusHistory, PerformanceDataset,
 │                                             # PerformanceRecord, KnowledgeRecord
@@ -369,6 +371,7 @@ app/
 │   ├── WebsiteReader.php                     # safe website fetching and fact extraction
 │   ├── ContentWorkflow.php                   # the only place content status changes
 │   ├── WorkflowProgress.php                  # step states for Dashboard and indicator
+│   ├── DemoDataReset.php                     # clears working data, keeps users and source files
 │   ├── SyntheticDatasetLoader.php
 │   ├── PerformanceAnalyzer.php               # evidence ladder
 │   ├── KnowledgeBuilder.php

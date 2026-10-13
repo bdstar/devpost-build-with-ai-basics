@@ -8,6 +8,7 @@ use App\Http\Controllers\IdeasController;
 use App\Http\Controllers\KnowledgeController;
 use App\Http\Controllers\PerformanceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResetController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -49,4 +50,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/knowledge', [KnowledgeController::class, 'index'])->name('knowledge.index');
     Route::post('/knowledge/build', [KnowledgeController::class, 'build'])->name('knowledge.build');
     Route::get('/knowledge/{record}', [KnowledgeController::class, 'show'])->name('knowledge.show');
+
+    Route::post('/reset', [ResetController::class, 'reset'])->name('data.reset');
 });

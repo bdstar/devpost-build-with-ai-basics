@@ -91,4 +91,17 @@
             @endif
         </section>
     </div>
+
+    <section class="card card-danger" id="reset">
+        <h3>Reset all project data</h3>
+        <p class="small">Permanently deletes the Business Profile, every idea round, all content items and their history, the loaded performance dataset, all Knowledge Base records and any AI-generated images. This cannot be undone.</p>
+        <p class="small muted">Your login is kept, and the synthetic dataset source files are not touched, so Step 4 can load them again.</p>
+        <form method="POST" action="{{ route('data.reset') }}" class="inline-form"
+              onsubmit="return confirm('Delete all project data? This cannot be undone.');">
+            @csrf
+            <input name="confirmation" type="text" autocomplete="off" required
+                   placeholder="Type {{ \App\Http\Controllers\ResetController::CONFIRMATION }} to confirm" aria-label="Type RESET to confirm">
+            <button type="submit" class="btn btn-danger">Reset all data</button>
+        </form>
+    </section>
 </x-layouts::app>
