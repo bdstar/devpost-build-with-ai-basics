@@ -1,0 +1,40 @@
+# Personal learning context (Devpost Learn)
+/devpost/learner-profile.md
+
+# Reference documents from the earlier, confidential Laravel project
+/social_media_content_management_system_brd.md
+/FEATURE_TEST_REPORT.md
+
+# Personal documents
+*.pdf
+
+# Local credentials
+.env
+.env.*
+!.env.example
+/auth.json
+
+# Local database and generated files
+/database/*.sqlite
+/storage/*.key
+/storage/pail
+/public/storage
+
+# Dependencies and tooling (Laravel defaults)
+/vendor
+/node_modules
+/public/build
+/public/hot
+*.log
+.phpunit.result.cache
+/.phpunit.cache
+.phpactor.json
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
+Homestead.json
+Homestead.yaml
+.DS_Store
+Thumbs.db

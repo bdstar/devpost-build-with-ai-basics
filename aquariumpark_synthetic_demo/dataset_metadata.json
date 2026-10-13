@@ -1,0 +1,29 @@
+{
+  "dataset_name": "Aquarium Park Synthetic Social Post Performance Demo",
+  "version": "1.0.0",
+  "created_for": "GenAI Ratel CMS hackathon proof of concept",
+  "synthetic": true,
+  "records": 30,
+  "date_range": {
+    "start": "2026-09-01",
+    "end": "2026-10-13"
+  },
+  "platforms": [
+    "Facebook",
+    "Instagram"
+  ],
+  "formats": [
+    "Carousel",
+    "Image",
+    "Reel",
+    "Text"
+  ],
+  "performance_metrics_are_real": false,
+  "public_context_url": "https://aquariumpark.com.bd/",
+  "seed": "hand-authored-fixed-records-v1",
+  "rules": [
+    "Never present the metrics as real Aquarium Park performance.",
+    "Keep data_source and is_real_performance_data fields attached to every record.",
+    "Label all derived knowledge and recommendations as synthetic-demo evidence."
+  ]
+}
