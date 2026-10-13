@@ -97,6 +97,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
 
 ## Final Review
 
+- [ ] Main content area uses the full width beside the sidebar (removed the 1200px cap on `.content`) — awaiting learner retry
 - [ ] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
