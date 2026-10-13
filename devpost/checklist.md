@@ -79,7 +79,7 @@ Build mode: fast (hands-on checkpoints after slice 2 and at final review)
   Learner check: Run `php artisan migrate:fresh --seed`, log in, and follow only the Continue buttons from Step 1 to the round-two comparison. Did you ever wonder what to do next?
   Commit: `Add dashboard and guided workflow progress`
 
-- [ ] **8. Optional Live AI mode with Gemini**
+- [x] **8. Optional Live AI mode with Gemini**
   Becomes usable: With `AI_MODE=live` and a `GEMINI_API_KEY`, profile assumptions, ideas (round two using the knowledge records in the prompt), captions and images come from Gemini, labelled Live AI with the model name. Failures show the cause and a Switch to Demo Fixtures action, never a silent fallback.
   Why now: Last, as the learner prioritised. The loop already works without it, and its model and image access is the least verified part of the spec.
   PRD ref: `prd.md > Step 1 — Business Profile`, `prd.md > Step 2 — Round-One Content Ideas`, `prd.md > Step 3 — Generate, Review and Approve`, `prd.md > Step 5 — Knowledge Feedback and Round Two`
@@ -119,4 +119,5 @@ Activity mode:
 - Slice 5: regenerating round two deletes its ideas, which would also delete content made from them. Round two now refuses to regenerate once any of its ideas has content (a guard on existing behavior, not new scope).
 - Slice 6: a test exposed that a workflow action on an out-of-date copy of an item could skip a change (rescheduling didn't clear the due marker). Every transition now reloads the item inside its transaction before checking the rule. Simulate Publishing and Mark as Manually Published are offered only for Scheduled items, matching the PRD transition list.
 - Slice 7: a step shows as locked only when the app actually refuses its action. On first use Steps 2, 3 and 5 are locked with reasons; Step 4 (load synthetic data) has no prerequisite, so it shows as "To do" rather than locked (the PRD's first-use note expected Steps 2–5 all locked). Step 3 counts as complete once any item is Approved, Scheduled or Published.
+- Slice 8: the first real call showed that `gemini-2.5-flash` is listed for the learner's key but returns 404 ("no longer available to new users"), so the default text model is now `gemini-3.8-flash`; `gemini-2.5-flash-image` works for images. "Switch to Demo Fixtures" lasts for the login session (Live AI still requires `AI_MODE=live` in `.env`). Generated images are saved to the git-ignored `public/generated/`. Tests pin `AI_MODE=fixtures` and block all real HTTP. Real run (rolled back, outside the logged-in app): profile from aquariumpark.com.bd, 6 round-one ideas, and 6 round-two ideas citing only above-average records plus one labelled exploratory idea. One round-two idea named an attraction that may not exist, so the prompts now restrict ideas to attractions named in the profile. A real image post was not generated through the app (the image call itself was verified once).
 
