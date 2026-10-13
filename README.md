@@ -486,4 +486,6 @@ The build was done in eight slices, each implemented, tested and committed separ
 
 ## License
 
-No license has been chosen yet. A `LICENSE` file will be added before publication.
+Licensed under the [Apache License, Version 2.0](LICENSE). Copyright 2026 Abdullah Al Mamun.
+
+The Laravel framework and other Composer dependencies are distributed under their own licenses (Laravel is MIT-licensed).
