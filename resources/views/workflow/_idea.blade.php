@@ -10,7 +10,11 @@
         <span class="tag">{{ $idea->platform }}</span>
         <span class="tag tag-format">{{ $idea->formatLabel() }}</span>
         <span class="tag">{{ $idea->campaign_goal }}</span>
-        <x-provenance :type="$idea->provenance === 'live_ai' ? 'live' : 'fixture'" />
+        @if (str_starts_with($idea->provenance, 'live_ai'))
+            <x-provenance type="live" :source="\Illuminate\Support\Str::after($idea->provenance, 'live_ai:')" />
+        @else
+            <x-provenance type="fixture" />
+        @endif
     </div>
     <p class="idea-hook">“{{ $idea->hook }}”</p>
     <dl class="idea-meta">
@@ -34,6 +38,9 @@
                 @endif
             </div>
             @if ($idea->knowledge_driven)
+                @if (str_starts_with($idea->provenance, 'live_ai') && $idea->why)
+                    <p class="small"><strong>Gemini's explanation:</strong> {{ $idea->why }}</p>
+                @endif
                 <ul class="why-list">
                     @foreach ($idea->influencingRecords() as $record)
                         <li>

@@ -19,6 +19,7 @@
 /storage/*.key
 /storage/pail
 /public/storage
+/public/generated
 
 # Dependencies and tooling (Laravel defaults)
 /vendor

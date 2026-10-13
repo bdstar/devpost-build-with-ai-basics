@@ -1,6 +1,6 @@
 @props(['title' => null])
 @php
-    $aiMode = config('ai.mode');
+    $aiMode = \App\Services\Ai\AiMode::current();
     $syntheticLoaded = \App\Models\PerformanceDataset::where('is_synthetic', true)->exists();
 @endphp
 <!DOCTYPE html>
@@ -44,9 +44,19 @@
             <div class="topbar-title">{{ $title ?? '' }}</div>
             <div class="topbar-right">
                 @if ($aiMode === 'live')
-                    <span class="badge badge-live" title="AI output comes from the Gemini API">Live AI</span>
+                    <span class="badge badge-live" title="AI output comes from the Gemini API">Live AI · {{ config('ai.gemini.text_model') }}</span>
+                    <form method="POST" action="{{ route('ai-mode.fixtures') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link">Switch to Demo Fixtures</button>
+                    </form>
                 @else
                     <span class="badge badge-fixture" title="AI output comes from labelled demo fixtures; no API calls">Demo Fixtures</span>
+                    @if (\App\Services\Ai\AiMode::isOverridden())
+                        <form method="POST" action="{{ route('ai-mode.live') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-link">Switch back to Live AI</button>
+                        </form>
+                    @endif
                 @endif
                 @if ($syntheticLoaded)
                     <span class="badge badge-synthetic" title="Performance metrics are synthetic, not real Aquarium Park analytics">Synthetic Demo Data</span>
@@ -72,6 +82,13 @@
                                 <li>{{ $problem }}</li>
                             @endforeach
                         </ul>
+                    @endif
+                    @if (session('ai_failed') && $aiMode === 'live')
+                        <form method="POST" action="{{ route('ai-mode.fixtures') }}" class="flash-action">
+                            @csrf
+                            <button type="submit" class="btn">Switch to Demo Fixtures</button>
+                            <span class="small">Continues with labelled demo outputs for this session. Nothing is replaced automatically.</span>
+                        </form>
                     @endif
                 </div>
             @endif

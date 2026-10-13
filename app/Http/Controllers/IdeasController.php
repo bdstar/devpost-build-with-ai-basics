@@ -7,6 +7,7 @@ use App\Models\ContentItem;
 use App\Models\ContentRound;
 use App\Models\KnowledgeRecord;
 use App\Services\Ai\AiException;
+use App\Services\Ai\AiMode;
 use App\Services\Ai\AiProvider;
 use App\Services\RoundComparison;
 use Illuminate\Http\RedirectResponse;
@@ -90,7 +91,7 @@ class IdeasController extends Controller
         try {
             $ideas = app(AiProvider::class)->ideas($profile, $knowledge, $number);
         } catch (AiException $e) {
-            return redirect()->route('workflow.index')->with('error', "Round {$number} generation failed: ".$e->getMessage().' Existing work was kept.');
+            return redirect()->route('workflow.index')->with('error', "Round {$number} generation failed: ".$e->getMessage().' Existing work was kept.')->with('ai_failed', true);
         }
 
         $knownIds = $knowledge->pluck('id')->all();
@@ -109,7 +110,7 @@ class IdeasController extends Controller
 
             $round = ContentRound::create([
                 'number' => $number,
-                'mode' => config('ai.mode'),
+                'mode' => AiMode::current(),
                 'profile_snapshot' => $profile->only(['id', 'website_url', 'fields', 'confirmed_at']),
                 'knowledge_record_ids' => $knowledge->pluck('id')->all(),
             ]);

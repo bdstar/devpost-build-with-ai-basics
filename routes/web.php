@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AiModeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ContentItemController;
 use App\Http\Controllers\DashboardController;
@@ -18,6 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::post('/ai-mode/fixtures', [AiModeController::class, 'fixtures'])->name('ai-mode.fixtures');
+    Route::post('/ai-mode/live', [AiModeController::class, 'live'])->name('ai-mode.live');
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/profile/analyse', [ProfileController::class, 'analyse'])->name('profile.analyse');

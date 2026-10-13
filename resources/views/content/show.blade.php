@@ -15,7 +15,11 @@
                     <span class="tag">{{ $idea->platform }}</span>
                     <span class="tag tag-format">{{ $idea->formatLabel() }}</span>
                     <span class="tag">{{ $idea->campaign_goal }}</span>
-                    <x-provenance :type="str_starts_with($item->provenance, 'live_ai') ? 'live' : 'fixture'" />
+                    @if (str_starts_with($item->provenance, 'live_ai'))
+                        <x-provenance type="live" :source="\Illuminate\Support\Str::after($item->provenance, 'live_ai:')" />
+                    @else
+                        <x-provenance type="fixture" />
+                    @endif
                 </div>
             </div>
             <x-status-pill :item="$item" />
@@ -71,7 +75,7 @@
                             @if ($item->image_provenance === 'demo_fixture')
                                 Demo fixture image — not generated in this session
                             @else
-                                Generated image · {{ $item->image_provenance }}
+                                AI-generated image (Live AI · {{ \Illuminate\Support\Str::after($item->image_provenance, 'live_ai:') }}) — review before use
                             @endif
                         </figcaption>
                     </figure>

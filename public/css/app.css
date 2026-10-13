@@ -343,6 +343,9 @@ a.step-link:hover { border-color: var(--teal); }
 .dash-grid h3 { margin-top: 0; }
 @media (max-width: 900px) { .steps ol { grid-template-columns: 1fr; } }
 
+.flash-action { display: flex; gap: 10px; align-items: center; margin-top: 8px; color: var(--text); }
+.topbar-right form { margin: 0; }
+
 /* Login */
 .login-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
 .login-card { width: 380px; }

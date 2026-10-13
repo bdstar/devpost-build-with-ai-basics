@@ -40,7 +40,7 @@ class ProfileController extends Controller
         try {
             $draft = app(AiProvider::class)->profile($result['facts'], $result['text']);
         } catch (AiException $e) {
-            return redirect()->route('profile.show')->withInput()->with('error', 'AI profile drafting failed: '.$e->getMessage());
+            return redirect()->route('profile.show')->withInput()->with('error', 'AI profile drafting failed: '.$e->getMessage())->with('ai_failed', true);
         }
 
         $fields = [];

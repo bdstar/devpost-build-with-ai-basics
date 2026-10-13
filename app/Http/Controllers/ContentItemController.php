@@ -49,7 +49,7 @@ class ContentItemController extends Controller
             $provider = app(AiProvider::class);
             $drafts = $ideas->mapWithKeys(fn (ContentIdea $idea) => [$idea->id => $provider->content($idea, $profile)]);
         } catch (AiException $e) {
-            return redirect()->route('content.index')->with('error', 'Content generation failed: '.$e->getMessage().' Existing work was kept.');
+            return redirect()->route('content.index')->with('error', 'Content generation failed: '.$e->getMessage().' Existing work was kept.')->with('ai_failed', true);
         }
 
         DB::transaction(function () use ($drafts) {
@@ -85,7 +85,7 @@ class ContentItemController extends Controller
         try {
             $draft = app(AiProvider::class)->content($item->idea, BusinessProfile::current());
         } catch (AiException $e) {
-            return back()->with('error', 'Regeneration failed: '.$e->getMessage().' The current content was kept.');
+            return back()->with('error', 'Regeneration failed: '.$e->getMessage().' The current content was kept.')->with('ai_failed', true);
         }
 
         return $this->attempt($item, fn () => $workflow->edit($item, $this->attributes($draft)), 'Regenerated.');
